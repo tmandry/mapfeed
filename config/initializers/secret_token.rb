@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Mapfeed::Application.config.secret_token = 'dfe14b8862d1919a56d5b861fb22cc9c037ddd2e881e7499cceab5fe0c53a9399515cdbefd4143a58b0ca76c604e7349db76d839583cf7c93f77c6c9eed746db'
+Mapfeed::Application.config.secret_token = '036b960f8da8ded31265187c40a784789951487e2d419d3ccfaa756284c9a31bc4c722a18d7d49a204acb31fe3c08446b28e603c16aa7689e6f31366e5ee0e7d'
