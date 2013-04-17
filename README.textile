@@ -48,8 +48,8 @@ h2. Getting Started
 
 * Clone the repo
 * cd into the directory
-* `bundle install` (you should do this every time you pull changes)
-* `rails server`
+* bundle install (you should do this every time you pull changes)
+* rails server
 * Go to http://localhost:3000/
 
 h2. Documentation and Support
