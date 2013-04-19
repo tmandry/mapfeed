@@ -74,3 +74,8 @@ module Mapfeed
     config.assets.version = '1.0'
   end
 end
+
+Twitter.configure do |config|
+  config.consumer_key = 'n0dyObVwoU2kOsyPeUyoA'
+  config.consumer_secret = 'StGMK1dQBACmbvVk2OI5Jwrg6J4B8NQrRkScjvYU'
+end

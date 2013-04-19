@@ -1,10 +1,21 @@
-h3 Home
-- @users.each do |user|
-  p
-    | User: #{link_to user.name, user}
+h3 Recent Tweets from a 2 mile radius of College Station
+.span8
+  table.table.table-condensed
+    thead
+      tr
+        th User
+        th Text
+        th Language
+        th Location
+    tbody
+      - @tweets.each do |tweet|
+        tr
+          td= tweet.from_user
+          td= tweet.text
+          td= tweet.lang
+          td= tweet.place
 
 <div id="map-canvas"></div>
-
 
 - content_for :head do
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
