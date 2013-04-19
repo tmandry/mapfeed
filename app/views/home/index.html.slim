@@ -11,6 +11,7 @@ h3 Recent Tweets from a 2 mile radius of College Station
         th Text
         th Language
         th Location
+        th pic
     tbody
       - @tweets.each do |tweet|
         tr
@@ -18,3 +19,4 @@ h3 Recent Tweets from a 2 mile radius of College Station
           td= tweet.text
           td= tweet.lang
           td= tweet.place
+          td= tweet.profile_image_url(size = :bigger)
