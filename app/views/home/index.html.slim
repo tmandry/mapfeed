@@ -1,24 +1,27 @@
 h3 Recent Tweets from a 2 mile radius of College Station
-.span8
-  table.table.table-condensed
-    thead
-      tr
-        th User
-        th Text
-        th Language
-        /th Location
-        th User Picture
-    tbody
-      - @tweets.each do |tweet|
+.row
+  .span12
+    table.table.table-condensed
+      thead
         tr
-          td= tweet.from_user
-          td= tweet.text
-          td= tweet.lang
-          /td= tweet.place
-          td
-            img src=tweet.profile_image_url(size = :bigger)
+          th User
+          th Text
+          th Language
+          /th Location
+          th User Picture
+      tbody
+        - @tweets.each do |tweet|
+          tr
+            td= tweet.from_user
+            td= tweet.text
+            td= tweet.lang
+            /td= tweet.place
+            td
+              img src=tweet.profile_image_url(size = :bigger)
 
-<div id="map-canvas"></div>
+.row
+  .span12
+    <div id="map-canvas"></div>
 
 - content_for :head do
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">

@@ -1,7 +1,8 @@
 doctype
 html
   head
-    meta content="width=(device-width,)initial-scale=1.0" name="viewport" title="#{(content_for?(:title) ? yield(:title) : "Mapfeed")}"
+    /meta content="width=(device-width,)initial-scale=1.0" name="viewport"
+    title="#{(content_for?(:title) ? yield(:title) : "Mapfeed")}"
     meta content="#{(content_for?(:description) ? yield(:description) : "Mapfeed")}" name="description"
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
@@ -15,10 +16,8 @@ html
     #main role="main"
       .container
         .content
-          .row
-            .span12
-              = render 'layouts/messages'
-              = yield
+          = render 'layouts/messages'
+          = yield
           footer
       /! ! end of .container
     /! ! end of #main
