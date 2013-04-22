@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     # longitude = -96.3342
     # cStat = latitude.to_s + ',' + longitude.to_s + ',2mi'
 
-	@tweets = client.search("-rt -http -:@", :geocode => "30.6278,-96.3342,2mi", :count => 4, :result_type => "recent").results
+	@tweets = client.search("-rt -http -@", :geocode => "30.6278,-96.3342,2mi", :count => 4, :result_type => "recent").results
     # @tweets = client.search("bachata",:count => 8, :result_type => "recent").results
   end
 end
