@@ -10,13 +10,15 @@ h3 Recent Tweets from a 2 mile radius of College Station
         th User
         th Text
         th Language
-        th Location
-        th pic
+        /th Location
+        th User Picture
     tbody
       - @tweets.each do |tweet|
         tr
           td= tweet.from_user
           td= tweet.text
           td= tweet.lang
-          td= tweet.place
-          td= tweet.profile_image_url(size = :bigger)
+          /td= tweet.place
+          td
+            img src=tweet.profile_image_url(size = :bigger)
+
