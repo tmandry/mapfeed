@@ -14,10 +14,11 @@ h3 Recent Tweets from a 2 mile radius of College Station
           td= tweet.from_user
           td= tweet.text
           td= tweet.lang
-<div id="map-canvas"></div>
           /td= tweet.place
           td
             img src=tweet.profile_image_url(size = :bigger)
+
+<div id="map-canvas"></div>
 
 - content_for :head do
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
