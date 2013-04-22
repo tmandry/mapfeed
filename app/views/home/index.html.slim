@@ -30,9 +30,10 @@ h3 Recent Tweets from a 2 mile radius of College Station
      function initialize() {
        var mapOptions = {
          zoom: 8,
-         center: new google.maps.LatLng(-34.397, 150.644),
+         center: new google.maps.LatLng(30.6278, 96.3342),
          mapTypeId: google.maps.MapTypeId.ROADMAP
        };
        map = new google.maps.Map(document.getElementById('map-canvas'),
            mapOptions);
      }
+     google.maps.event.addDomListener(window, 'load', initialize);
