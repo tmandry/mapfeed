@@ -18,6 +18,12 @@ h3 Recent Tweets from a 2 mile radius of College Station
             td= tweet.geo.coordinates
             td
               img src=tweet.profile_image_url(size = :bigger)
+.row
+  .span4
+  <form class="form-search">
+  <input type="text" class="input-medium search-query">
+  <button type="submit" class="btn">Search</button>
+</form>
 
 .row
   .span12
