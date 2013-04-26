@@ -12,4 +12,13 @@ class HomeController < ApplicationController
 	@tweets = client.search("-rt -http -@", :geocode => "30.6278,-96.3342,2mi", :count => 4, :result_type => "recent").results
     # @tweets = client.search("bachata",:count => 8, :result_type => "recent").results
   end
+
+  def tweets
+    client = Twitter::Client.new(
+        oauth_token: '14730924-OL77JFECKu31uIXaoJJEYR817MEq3u6GJzGsIa31b',
+        oauth_token_secret: 'RyZBlCDDQo4idFO00asAAsBblzcROkRr4czFCBt1kwY'
+    )
+    @tweets = client.search("-rt -http -@", :geocode => "30.6278,-96.3342,2mi", :count => 4, :result_type => "recent").results
+    render json: @tweets
+  end
 end
