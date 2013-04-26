@@ -37,7 +37,6 @@
   script
    | var map;
      var markers=[];
-       var locations = [];
      function initialize() {
        var mapOptions = {
          zoom: 14,
@@ -47,6 +46,7 @@
        var map = new google.maps.Map(document.getElementById('map-canvas'),
            mapOptions);
 
+       var locations = [];
        locations.push([30.6279, -96.3350]);
        var marker, i;
        for(i=0; i<4; i++){
