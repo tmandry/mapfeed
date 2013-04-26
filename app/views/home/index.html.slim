@@ -36,6 +36,8 @@
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
   script
    | var map;
+     var markers=[];
+       var locations = [];
      function initialize() {
        var mapOptions = {
          zoom: 14,
@@ -45,18 +47,18 @@
        var map = new google.maps.Map(document.getElementById('map-canvas'),
            mapOptions);
 
-       var locations = [[]]
-       locations.push([[30.6279, -96.3350]])
-       var marker, i
+       locations.push([30.6279, -96.3350]);
+       var marker, i;
        for(i=0; i<4; i++){
-          locations.push(Tweet[i].geo.coordinates.replace(/[\[\]']+/g,''))
+          //locations.push(Tweet[i].geo.coordinates.replace(/[\[\]']+/g,''))
        }
 
-       for (i = 0; i < 4; i++) {
-         marker = new google.maps.Marker({
+       for (i = 0; i < 1; i++) {
+         markers.push(new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][0], locations[i][1]),
-          map: map
-         });
+          map: map,
+          title: "test"
+         }));
         }
      }
      google.maps.event.addDomListener(window, 'load', initialize);
