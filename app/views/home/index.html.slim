@@ -1,6 +1,17 @@
 .row
+  .span8
+    h3 style="margin:-5px 0" Recent Tweets from College Station
+    h5 style="margin-top:-5px" 2 mi radius
+  .span4
+    <form class="form-search" style="float:right">
+      <input type="text" class="input-medium search-query">
+      <button type="submit" class="btn">Search</button>
+    </form>
+.row
   .span12
-    h3 Recent Tweets from a 2 mile radius of College Station
+    <div id="map-canvas"></div>
+.row
+  .span12
     table.table.table-condensed
       thead
         tr
@@ -18,16 +29,6 @@
             td= tweet.geo.coordinates
             td
               img src=tweet.profile_image_url(size = :bigger)
-.row
-  .span4
-  <form class="form-search">
-  <input type="text" class="input-medium search-query">
-  <button type="submit" class="btn">Search</button>
-</form>
-
-.row
-  .span12
-    <div id="map-canvas"></div>
 
 - content_for :head do
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
