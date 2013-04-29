@@ -44,10 +44,15 @@
        center: new google.maps.LatLng(30.6279, -96.3350),
        mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-      var map = new google.maps.Map(document.getElementById('map-canvas'),
+      map = new google.maps.Map(document.getElementById('map-canvas'),
          mapOptions);
+      updateTweets();
+      setInterval(function(){updateTweets()},30000);
+    }
 
+    function updateTweets() {
       $.getJSON("/tweets.json", function(tweets) {
+        clearOverlays();
         for(var i=0; i<tweets.length; i++) {
           var coord = tweets[i].geo.coordinates;
           markers.push(new google.maps.Marker({
@@ -58,4 +63,11 @@
         }
       });
     }
+
+    function clearOverlays() {
+      for (var i = 0; i < markers.length; i++ ) {
+        markers[i].setMap(null);
+      }
+    }
+
     google.maps.event.addDomListener(window, 'load', initialize);
