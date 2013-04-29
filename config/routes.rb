@@ -4,6 +4,7 @@ Mapfeed::Application.routes.draw do
   end
   root :to => "home#index"
   match "/tweets" => "home#tweets"
+
   devise_for :users
   resources :users
 end
