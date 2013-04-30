@@ -3,8 +3,8 @@
     h3 style="margin:-5px 0" Recent Tweets from College Station
     h5 style="margin-top:-5px" 2 mi radius
   .span4
-    <form class="form-search" style="float:right">
-      <input type="text" class="input-large search-query">
+    <form class="form-search" style="float:right" action= "/" method="GET">
+      <input type="text" class="input-medium search-query" name= "query">
       <button type="submit" class="btn">Search</button>
     </form>
 .row
@@ -26,7 +26,7 @@
             td= tweet.from_user
             td= tweet.text
             td= tweet.lang
-            td= tweet.geo.coordinates
+            td= tweet.geo.coordinates rescue " "
             td
               img src=tweet.profile_image_url(size = :bigger)
 
