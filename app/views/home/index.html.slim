@@ -4,7 +4,7 @@
     h5 style="margin-top:-5px" 2 mi radius
   .span4
     <form class="form-search" style="float:right" action= "/" method="GET">
-      <input type="text" class="input-medium search-query" name= "query">
+      <input type="text" class="input-medium search-query" name= "query" placeholder= "Search Term" value= "puppy" >
       <button type="submit" class="btn">Search</button>
     </form>
 .row
@@ -39,54 +39,37 @@
     var map;
     var markers=[];
     infowindow = new google.maps.InfoWindow();
-
     function initialize() {
       var mapOptions = {
-       zoom: 13,
+       zoom: 14,
        center: new google.maps.LatLng(30.6279, -96.3350),
        mapTypeId: google.maps.MapTypeId.ROADMAP
       }
       map = new google.maps.Map(document.getElementById('map-canvas'),
          mapOptions);
       updateTweets();
-      google.maps.event.addListenerOnce(map, 'tilesloaded', make_markers);
       setInterval(function(){updateTweets()},30000);
     }
-
-    function make_markers(){
-
-        $.getJSON("/tweets.json", function(tweets) {
-          for(var i=0; i<tweets.length; i++) {
-            var coord = tweets[i].geo.coordinates;
-            createMarker(map, new google.maps.LatLng(coord[0], coord[1]), tweets[i].text);
-          }
-        });
-    }
-
-    function createMarker(map, position, content) {
-        var marker = new google.maps.Marker({
-          position: position,
-          animation: google.maps.Animation.DROP,
-          map: map
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(content)
-          infowindow.open(map,marker);
-        });
-      }
 
     function updateTweets() {
       $.getJSON("/tweets.json", function(tweets) {
         clearOverlays();
         for(var i=0; i<tweets.length; i++) {
           var coord = tweets[i].geo.coordinates;
-          markers.push(new google.maps.Marker({
+          var content = tweets[i].text;
+          var thisMarker = new google.maps.Marker({
            position: new google.maps.LatLng(coord[0], coord[1]),
            map: map,
            animation: google.maps.Animation.DROP,
            title: "test"
-          }));
+          });
+
+          google.maps.event.addListener(thisMarker, 'click', function(){
+            infowindow.setContent(content)
+            infowindow.open(map,thisMarker);
+          });
+
+          markers.push(thisMarker);
         }
       });
     }
@@ -98,4 +81,3 @@
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
-
