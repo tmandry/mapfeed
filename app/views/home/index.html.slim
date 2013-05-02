@@ -9,7 +9,7 @@
     </form>
 .row
   .span12
-    <div id="map-canvas"></div>
+    <div id="map_canvas"></div>
 .row
   .span12
     table.table.table-condensed
@@ -33,7 +33,7 @@
 - content_for :head do
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
-  <style> html, body, #map-canvas {margin: 0; padding: 0; height: 100%; }</style>
+  <style> html, body, #map_canvas {margin: 0; padding: 0; height: 100%; }</style>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
   javascript:
     var map;
@@ -45,7 +45,7 @@
        center: new google.maps.LatLng(30.6279, -96.3350),
        mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-      map = new google.maps.Map(document.getElementById('map-canvas'),
+      map = new google.maps.Map(document.getElementById('map_canvas'),
          mapOptions);
       updateTweets();
       setInterval(function(){updateTweets()},30000);
