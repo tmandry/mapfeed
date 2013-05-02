@@ -58,7 +58,15 @@
           if (!tweets[i].geo) continue;
 
           var coord = tweets[i].geo.coordinates;
-          var content = tweets[i].text;
+          var content = 
+            '<img border="0" align="Left" src=tweets[i].profile_image_url>' + 
+            tweets[i].user.screen_name + 
+            " (" + 
+            tweets[i].user.name + 
+            ")" + 
+            ": " + 
+            tweets[i].text;
+
           var thisMarker = new google.maps.Marker({
            position: new google.maps.LatLng(coord[0], coord[1]),
            map: map,
