@@ -66,14 +66,17 @@
            title: "test"
           });
 
-          google.maps.event.addListener(thisMarker, 'click', function(){
-            infowindow.setContent(content)
-            infowindow.open(map,thisMarker);
-          });
-
+          google.maps.event.addListener(thisMarker, 'click', createMarkerListener(thisMarker, content));
           markers.push(thisMarker);
         }
       });
+    }
+
+    function createMarkerListener(marker, content) {
+      return function(){
+        infowindow.setContent(content)
+        infowindow.open(map, marker);
+      }
     }
 
     function clearOverlays() {
