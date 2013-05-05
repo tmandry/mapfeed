@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
+ruby "1.9.3"
 gem 'rails', '3.2.11'
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
+gem 'pg', group: [:production]
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+  gem "bootstrap-sass", ">= 2.3.0.0"
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
@@ -26,7 +29,6 @@ gem "rb-inotify", ">= 0.9.0", :group => :development, :require => false
 gem "rb-fsevent", ">= 0.9.3", :group => :development, :require => false
 gem "rb-fchange", ">= 0.0.6", :group => :development, :require => false
 gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
-gem "bootstrap-sass", ">= 2.3.0.0"
 gem "devise", ">= 2.2.3"
 gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.1.0"
