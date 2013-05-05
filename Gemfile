@@ -38,3 +38,4 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 gem "twitter"
 gem "geocoder"
 gem "mongoid"
+gem "debugger", group: [:development, :test]
