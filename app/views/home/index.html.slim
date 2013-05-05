@@ -3,32 +3,13 @@
     h3 style="margin:-5px 0" Recent Tweets from College Station
     h5 style="margin-top:-5px" 2 mi radius
   .span4
-    <form class="form-search" style="float:right" action= "/" method="GET">
-      <input type="text" class="input-medium search-query" name= "query" placeholder= "Search Term" value= "puppy" >
-      <button type="submit" class="btn">Search</button>
+    <form class="form-search" style="float:right">
+      <input id="query" type="text" class="input-medium search-query" name="query" placeholder= "Search Term">
+      <button id="searchBtn" type="button" class="btn">Search</button>
     </form>
 .row
   .span12
     <div id="map_canvas"></div>
-.row
-  .span12
-    table.table.table-condensed
-      thead
-        tr
-          th User
-          th Text
-          th Language
-          th Location
-          th User Picture
-      tbody
-        - @tweets.each do |tweet|
-          tr
-            td= tweet.from_user
-            td= tweet.text
-            td= tweet.lang
-            td= tweet.geo.coordinates rescue " "
-            td
-              img src=tweet.profile_image_url(size = :bigger)
 
 - content_for :head do
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -47,12 +28,17 @@
       }
       map = new google.maps.Map(document.getElementById('map_canvas'),
          mapOptions);
+
+      $('#searchBtn').click(updateTweets);
       updateTweets();
-      setInterval(function(){updateTweets()},30000);
+      setInterval(updateTweets,30000);
     }
 
     function updateTweets() {
-      $.getJSON("/tweets.json", function(tweets) {
+      data = {
+        'query': $('#query')[0].value
+      }
+      $.getJSON("/tweets.json", data, function(tweets) {
         clearOverlays();
         for(var i=0; i<tweets.length; i++) {
           if (!tweets[i].geo) continue;
@@ -63,15 +49,13 @@
             tweets[i].user.screen_name +
             " (" +
             tweets[i].user.name +
-            ")" +
-            ": " +
+            "): " +
             tweets[i].text;
 
           var thisMarker = new google.maps.Marker({
            position: new google.maps.LatLng(coord[0], coord[1]),
            map: map,
-           animation: google.maps.Animation.DROP,
-           title: "test"
+           animation: google.maps.Animation.DROP
           });
 
           google.maps.event.addListener(thisMarker, 'click', createMarkerListener(thisMarker, content));
