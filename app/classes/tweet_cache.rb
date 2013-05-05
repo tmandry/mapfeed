@@ -13,7 +13,7 @@ class TweetCache
       cache.options = query_options  # not sure why I have to do this.. Mongoid bug?
 
       # Add any results that appeared since the last query
-      options[:since_id] = cache.results.desc(:id).first.id.to_i
+      options[:since_id] = cache.results.desc(:id).first.id.to_i rescue nil
       results = twitter_client.search(query, options).results
       cache.results.concat(results.collect {|result| ResultTweet.new(mongoize(result.to_hash))})
 
