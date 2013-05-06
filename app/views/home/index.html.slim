@@ -72,7 +72,10 @@
             " (" +
             tweets[i].user.name +
             "): " +
-            tweets[i].text;
+            tweets[i].text +
+            "(Tweeted " +
+            parseTwitterDate(tweets[i].created_at) +
+            ")";
 
           var thisMarker = new google.maps.Marker({
            position: new google.maps.LatLng(coord[0], coord[1]),
@@ -100,6 +103,15 @@
         markers[i].setMap(null);
       }
       markers = [];
+    }
+
+    //Pulled from Brenen at the website
+    //http://www.quietless.com/kitchen/format-twitter-created_at-date-with-javascript/
+    function parseTwitterDate(text) {
+      var newtext = text.replace(/(\+\S+) (.*)/, '$2 $1')
+      var date = new Date(Date.parse(text)).toLocaleDateString();
+      var time = new Date(Date.parse(text)).toLocaleTimeString();
+      return date +' • ' + time;
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
