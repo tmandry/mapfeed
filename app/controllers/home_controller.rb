@@ -11,14 +11,26 @@ class HomeController < ApplicationController
 
   def tweets
     query = params[:query]
-    @radius = (params[:radius] or "2mi")
+    radius = (params[:radius] or "2mi")
     location = (params[:location] or "College Station, TX")
     geocode = Geocoder.coordinates(location)
-    @tweets = TweetCache.new.search(query, :geocode => "#{geocode[0]},#{geocode[1]},#{@radius}", :count => 100, :result_type => "recent")
+    tweets = TweetCache.new.search(query, :geocode => "#{geocode[0]},#{geocode[1]},#{radius}", :count => 100, :result_type => "recent")
     results = {
-      tweets: @tweets,
+      tweets: tweets,
       center: geocode
     }
+
+    # Save search terms if user logged in
+    if user_signed_in?
+      current_user.last_search = SearchTerms.new(
+        location: location,
+        query: query,
+        radius: radius
+      )
+      current_user.save
+      logger.debug current_user.attributes
+    end
+
     render json: results
   end
 end
