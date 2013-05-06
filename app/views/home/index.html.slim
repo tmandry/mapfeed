@@ -2,9 +2,9 @@
   form class="form-search" id="search-form" style="float:right"
     .span7
       h3 style="margin:-5px 0" Recent Tweets from
-      input id="location" type="text" class="input-medium" value="College Station, TX"
+      input id="location" type="text" class="input-medium" value="#{@location}"
     .span5
-      input id="query" type="text" class="input-medium search-query" name="query" placeholder= "Search Term"
+      input id="query" type="text" class="input-medium search-query" value= "#{@query}" name="query" placeholder= "Search Term"
       select name= "radius" id= "radius"
         option value="2mi" 2 Miles
         option value="4mi" 4 Miles

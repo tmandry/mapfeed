@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
   def index
-    if user_signed_in?
-      #...
+    if user_signed_in? and current_user.last_search
+      @query = current_user.last_search.query
+      @location = current_user.last_search.location
+      @radius = current_user.last_search.radius
     else
       @query = ""
       @location = "College Station, TX"
