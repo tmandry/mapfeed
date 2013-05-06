@@ -30,7 +30,6 @@ class HomeController < ApplicationController
         radius: radius
       )
       current_user.save
-      logger.debug current_user.attributes
     end
 
     render json: results
