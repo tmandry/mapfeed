@@ -3,9 +3,9 @@
     h3 style="margin:-5px 0" Recent Tweets from College Station
     h5 style="margin-top:-5px" 2 mi radius
   .span4
-    <form class="form-search" style="float:right">
+    <form class="form-search" id="search-form" style="float:right">
       <input id="query" type="text" class="input-medium search-query" name="query" placeholder= "Search Term">
-      <button id="searchBtn" type="button" class="btn">Search</button>
+      <button id="searchBtn" type="submit" class="btn">Search</button>
     </form>
 .row
   .span12
@@ -29,9 +29,14 @@
       map = new google.maps.Map(document.getElementById('map_canvas'),
          mapOptions);
 
-      $('#searchBtn').click(updateTweets);
+      $('#search-form').submit(newSearch);
       updateTweets();
       setInterval(updateTweets,30000);
+    }
+
+    function newSearch() {
+      updateTweets();
+      return false;
     }
 
     function updateTweets() {
