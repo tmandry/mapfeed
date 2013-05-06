@@ -22,6 +22,9 @@ h2. Getting Started
 
 * Clone the repo
 * cd into the directory
+* Install Ruby 1.9.3 and RubyGems
+* Install MongoDB
+* Run mongod.exe
 * bundle install (you should do this every time you pull changes)
 * rails server
 * Go to http://localhost:3000/
