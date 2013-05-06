@@ -1,12 +1,20 @@
 .row
-  .span8
+  .span7
     h3 style="margin:-5px 0" Recent Tweets from College Station
-    h5 style="margin-top:-5px" 2 mi radius
-  .span4
-    <form class="form-search" id="search-form" style="float:right">
-      <input id="query" type="text" class="input-medium search-query" name="query" placeholder= "Search Term">
-      <button id="searchBtn" type="submit" class="btn">Search</button>
+    h5 style="margin-top:-5px" Radius 
+  .span5
+    <form class="form-search" id= "search-form" style="float:right">
+    <input id="query" type="text" class="input-medium search-query" name="query" placeholder= "Search Term">
+    <select name= "radius" input id= "radius">
+    <option value= "2mi">2 Miles</option>
+    <option value= "4mi">4 Miles</option>
+    <option value= "6mi">6 Miles</option>
+    <option value= "8mi">8 Miles</option>
+    <option value= "10mi">10 Miles</option>
+    </select>
+    <button id="searchBtn" type="button" class="btn"> Search</button>
     </form>
+
 .row
   .span12
     <div id="map_canvas"></div>
@@ -41,7 +49,8 @@
 
     function updateTweets() {
       data = {
-        'query': $('#query')[0].value
+        'query': $('#query')[0].value,
+        'radius' : $('#radius')[0].value
       }
       $.getJSON("/tweets.json", data, function(tweets) {
         clearOverlays();
