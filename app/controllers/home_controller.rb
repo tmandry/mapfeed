@@ -1,4 +1,14 @@
 class HomeController < ApplicationController
+  def index
+    if user_signed_in?
+      #...
+    else
+      @query = ""
+      @location = "College Station, TX"
+      @radius = "2mi"
+    end
+  end
+
   def tweets
     query = params[:query]
     @radius = (params[:radius] or "2mi")
