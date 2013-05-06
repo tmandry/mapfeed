@@ -25,6 +25,8 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
+  embeds_one :last_search, class_name: "SearchTerms"
+
   ## Confirmable
   # field :confirmation_token,   :type => String
   # field :confirmed_at,         :type => Time
@@ -38,4 +40,13 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+end
+
+class SearchTerms
+  include Mongoid::Document
+  embedded_in :user, inverse_of: :last_search
+
+  field :location, type: String
+  field :query, type: String
+  field :radius, type: String
 end
