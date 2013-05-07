@@ -9,7 +9,7 @@ class TweetCache
     cache = criteria.first_or_initialize
 
     # Update results by hitting the Twitter API, if needed
-    if cache.results.count == 0 or cache.updated_at < 1.minute.ago
+    if cache.results.count == 0 or cache.updated_at < 30.seconds.ago
       cache.options = query_options  # not sure why I have to do this.. Mongoid bug?
 
       # Add any results that appeared since the last query
